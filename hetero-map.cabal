@@ -1,7 +1,7 @@
 Name: hetero-map
 Description:
     Pure heterogeneous maps.  
-Version: 0.10
+Version: 0.20
 Stability: experimental
 Synopsis: Pure heterogeneous maps.
 License: BSD3
