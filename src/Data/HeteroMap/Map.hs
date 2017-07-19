@@ -2,7 +2,7 @@
 
 module Data.HeteroMap.Map
     ( Key, newKey
-    , Map, empty, singleton, insert, lookup, overwrite
+    , Map, empty, singleton, insert, lookup, update
     )
 where
 
@@ -51,5 +51,5 @@ lookup Key (Map m) = access m
 
 -- | Same as insert, except does not add the key identifier to the map,
 -- instead ensuring that it's already there.
-overwrite :: In x xs => Key x a -> a -> Map xs -> Map xs
-overwrite Key x (Map m) = Map (replace x m)
+update :: In x xs => Key x a -> a -> Map xs -> Map xs
+update Key x (Map m) = Map (replace x m)
