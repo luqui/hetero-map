@@ -1,4 +1,4 @@
-{-# LANGUAGE RankNTypes, MultiParamTypeClasses, FlexibleInstances, TypeOperators, GADTs #-}
+{-# LANGUAGE IncoherentInstances, RankNTypes, MultiParamTypeClasses, FlexibleInstances, TypeOperators, GADTs #-}
 
 module Data.HeteroMap.Map
     ( Key, newKey
