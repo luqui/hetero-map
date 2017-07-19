@@ -1,6 +1,6 @@
 {-# LANGUAGE IncoherentInstances, RankNTypes, MultiParamTypeClasses, FlexibleInstances, TypeOperators, GADTs #-}
 
-module HeteroMap.Map
+module Data.HeteroMap.Map
     ( Key, newKey
     , Map, empty, singleton, insert, lookup, overwrite
     )
