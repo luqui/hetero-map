@@ -32,9 +32,11 @@ data Key x a where
 -- | A heterogeneous map, including keys @xs@.
 newtype Map xs = Map xs
 
+-- | Creates an empty map.
 empty :: Map Z
 empty = Map Z
 
+-- | Creates a map containing 1 key-value pair.
 singleton :: Key x a -> a -> Map (x :* Z)
 singleton Key v = Map (v :* Z)
 
@@ -43,9 +45,11 @@ singleton Key v = Map (v :* Z)
 newKey :: (forall x. Key x a -> b) -> b
 newKey cc = cc Key
 
+-- | Inserts a value into the map.
 insert :: Key x a -> a -> Map xs -> Map (x :* xs)
 insert Key val (Map m) = Map (val :* m)
 
+-- | Looks up a value inside the map.
 lookup :: In x xs => Key x a -> Map xs -> a
 lookup Key (Map m) = access m
 
