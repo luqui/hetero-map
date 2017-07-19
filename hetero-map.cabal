@@ -1,14 +1,25 @@
-Name: hetero-map
-Description:
-    Pure heterogeneous maps.  
-Version: 0.20
-Stability: experimental
-Synopsis: Pure heterogeneous maps.
-License: BSD3
-Category: Data, Data Structures
-Author: Luke Palmer
-Homepage: http://github.com/luqui/hetero-map
-Maintainer: lrpalmer@gmail.com
-Build-Type: Simple
-Build-Depends: base, containers, ghc-prim
-Exposed-Modules: HeteroMap.Map
+name:                hetero-map
+description:         Pure heterogeneous maps.  
+synopsis:            Pure heterogeneous maps.
+version:             0.21.0
+stability:           experimental
+license:             BSD3
+license-file:        LICENSE
+homepage:            https://github.com/luqui/hetero-map#README.md
+author:              Luke Palmer
+maintainer:          lrpalmer@gmail.com
+copyright:           2017 Luke Palmer
+category:            Data, Data Structures
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+library
+  hs-source-dirs:      src
+  exposed-modules:     Data.HeteroMap.Map
+  build-depends:       base >= 4.7 && < 5
+  default-language:    Haskell2010
+
+source-repository head
+  type:     git
+  location: https://github.com/luqui/hetero-map
