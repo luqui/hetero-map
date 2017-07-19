@@ -6,7 +6,7 @@ module Data.HeteroMap.Map
     )
 where
 
-import Prelude hiding (lookup)
+import Prelude ()
 
 class In x xs where
     access :: xs -> x
