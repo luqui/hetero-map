@@ -1,4 +1,4 @@
-{-# LANGUAGE IncoherentInstances, RankNTypes, MultiParamTypeClasses, FlexibleInstances, TypeOperators, GADTs #-}
+{-# LANGUAGE RankNTypes, MultiParamTypeClasses, FlexibleInstances, TypeOperators, GADTs #-}
 
 module Data.HeteroMap.Map
     ( Key, newKey
@@ -7,27 +7,23 @@ module Data.HeteroMap.Map
 where
 
 import Prelude hiding (lookup)
-import Data.Unique
-import GHC.Prim (Any)
-import qualified Data.Map as Map
-import Unsafe.Coerce (unsafeCoerce)
-import System.IO.Unsafe (unsafePerformIO)
-import Data.Maybe (fromJust)
 
-class In x xs where 
+class In x xs where
     access :: xs -> x
     replace :: x -> xs -> xs
-instance In x (x :* xs) where 
-    access (a:*as) = a
-    replace x (a:*as) = (x:*as)
-instance In x xs => In x (y:*xs) where
-    access (a:*as) = access as
-    replace x (a:*as) = (a:*replace x as)
+
+instance In x (x :* xs) where
+    access (a :* _) = a
+    replace x (_ :* as) = (x :* as)
+
+instance In x xs => In x (y :* xs) where
+    access (_ :* as) = access as
+    replace x (a :* as) = (a :* replace x as)
 
 data Z = Z
 data a :* b = a :* !b
 
--- | A Key in a heterogeneous map.  @x@ is the key identifier type, 
+-- | A Key in a heterogeneous map. @x@ is the key identifier type,
 -- which ensures that we don't look up a key in a map that doesn't
 -- have it.
 data Key x a where
